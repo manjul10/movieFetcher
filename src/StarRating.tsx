@@ -6,6 +6,7 @@ interface StarRatingProps {
   size?: number;
   defaultRating?: number;
   onSetRating?: (rating: number) => void;
+  userRating?: number;
 }
 
 const StarRating = ({
@@ -17,7 +18,7 @@ const StarRating = ({
 }: StarRatingProps) => {
   const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
-  const handleClick = (rating: any) => {
+  const handleClick = (rating: number) => {
     setRating(rating);
     onSetRating?.(rating);
   };
