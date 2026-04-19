@@ -21,6 +21,7 @@ function App() {
       const jsonResponse = await response.json();
       if (jsonResponse.Search) {
         setMovies(jsonResponse.Search);
+        setErr("");
       } else if (jsonResponse.Error) {
         setErr(jsonResponse.Error);
         setMovies(null);
