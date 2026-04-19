@@ -11,6 +11,7 @@ const HeroPage = ({
   setUserRating,
   userRating,
   setFavorites,
+  err,
 }: HeroProps) => {
   const fetchDetailData = async (id: string) => {
     const resp = await fetch(
@@ -152,8 +153,14 @@ const HeroPage = ({
         <div className="flex flex-col gap-8">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-black text-white tracking-tight italic uppercase">
-              {movies?.length} Results for{" "}
-              <span className="text-green-500">"{search}"</span>
+              {err ? (
+                <span className="text-red-500">{err}</span>
+              ) : (
+                <>
+                  {movies?.length} Results for{" "}
+                  <span className="text-green-500">"{search}"</span>
+                </>
+              )}
             </h2>
             <span className="text-xs font-bold text-gray-500 uppercase tracking-widest cursor-pointer hover:text-white transition-colors">
               See More

@@ -10,21 +10,39 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const [userRating, setUserRating] = useState(0);
   const [favorites, setFavorites] = useState(() => {
-    return JSON.parse(localStorage.getItem("watched") || "");
+    return JSON.parse(localStorage.getItem("watched") || "[]");
   });
-  // const [hoverRating, SetHoverRating] = useState(0);
+  const [err, setErr] = useState("");
   const [search, setSearch] = useState("avengers");
-  const fetchData = async () => {
-    const url = `https://www.omdbapi.com/?s=${search}&apikey=97c9a473`;
-    const response = await fetch(url);
-    const jsonResponse = await response.json();
-    if (jsonResponse.Search) {
-      setMovies(jsonResponse.Search);
+  const fetchData = async (search: string, signal: AbortSignal) => {
+    try {
+      const url = `https://www.omdbapi.com/?s=${search}&apikey=97c9a473`;
+      const response = await fetch(url, { signal });
+      const jsonResponse = await response.json();
+      if (jsonResponse.Search) {
+        setMovies(jsonResponse.Search);
+      } else if (jsonResponse.Error) {
+        setErr(jsonResponse.Error);
+        setMovies(null);
+      }
+    } catch (err) {
+      if (err.name === "AbortError") {
+        console.log("Fetch Aborted");
+      } else {
+        console.error("Fetch Error:", err);
+      }
     }
   };
-  console.log(selectedMovie);
+  // console.log(selectedMovie);
   useEffect(() => {
-    fetchData();
+    const controller = new AbortController();
+    if (search.length < 3) {
+      setMovies(null);
+      setErr("");
+      return;
+    }
+    fetchData(search, controller.signal);
+    return () => controller.abort();
   }, [search]);
 
   const watchedMovieRating = favorites.find(
@@ -53,6 +71,7 @@ function App() {
               userRating={userRating}
               setFavorites={setFavorites}
               search={search}
+              err={err}
             />
 
             {/* Right Column: Watchlist & Trailers */}

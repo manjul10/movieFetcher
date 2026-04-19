@@ -22,4 +22,5 @@ export interface HeroProps {
   setUserRating: (value: number) => void;
   userRating: number;
   setFavorites: (value: Movie[]) => void;
+  err: string;
 }
