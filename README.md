@@ -2,8 +2,6 @@
 
 A sleek, modern movie discovery application built with **React**, **TypeScript**, and **Vite**. MovieFetcher allows you to search for your favorite films, view detailed information, rate them, and manage your personal watchlist.
 
-![App Preview](https://placehold.co/1200x600/0f0f10/green?text=MovieFetcher+Discovery+Dashboard)
-
 ## ✨ Features
 
 - **🔍 Dynamic Search**: Real-time movie searching using the OMDb API.
