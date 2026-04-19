@@ -15,7 +15,7 @@ const HeroPage = ({
 }: HeroProps) => {
   const fetchDetailData = async (id: string) => {
     const resp = await fetch(
-      `https://www.omdbapi.com/?i=${id}&apikey=97c9a473`,
+      `https://www.omdbapi.com/?i=${id}&apikey=${import.meta.env.VITE_API_KEY}`,
     );
 
     const fetchedJsonResponse = await resp.json();

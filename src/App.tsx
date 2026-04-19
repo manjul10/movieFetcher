@@ -16,7 +16,7 @@ function App() {
   const [search, setSearch] = useState("avengers");
   const fetchData = async (search: string, signal: AbortSignal) => {
     try {
-      const url = `https://www.omdbapi.com/?s=${search}&apikey=97c9a473`;
+      const url = `https://www.omdbapi.com/?s=${search}&apikey=${import.meta.env.VITE_API_KEY}`;
       const response = await fetch(url, { signal });
       const jsonResponse = await response.json();
       if (jsonResponse.Search) {
