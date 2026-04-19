@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# 🎬 MovieFetcher
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek, modern movie discovery application built with **React**, **TypeScript**, and **Vite**. MovieFetcher allows you to search for your favorite films, view detailed information, rate them, and manage your personal watchlist.
 
-Currently, two official plugins are available:
+![App Preview](https://placehold.co/1200x600/0f0f10/green?text=MovieFetcher+Discovery+Dashboard)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- **🔍 Dynamic Search**: Real-time movie searching using the OMDb API.
+- **📄 Detailed Insights**: Comprehensive movie details including plot, actors, ratings, and runtime.
+- **⭐ Interactive Rating**: Custom star rating system to track your personal movie preferences.
+- **📋 Watchlist Management**: Add and remove movies from your personal watchlist.
+- **💾 Persistent Storage**: Saves your watchlist and ratings locally using `localStorage`.
+- **🎨 Premium UI/UX**: Dark-themed, responsive design with smooth animations and a cinematic feel, powered by Tailwind CSS.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend**: [React 18](https://reactjs.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **API**: [OMDb API](http://www.omdbapi.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Installation & Setup
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/manjul10/movieFetcher.git
+   cd movieFetcher
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. **Get an OMDb API Key**:
+   - Go to [OMDb API](http://www.omdbapi.com/apikey.aspx) and sign up for a free API key.
+   - (Note: The current implementation has a hardcoded key for demonstration. For production, use environment variables).
+
+4. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+
+5. **Open the app**:
+   Navigate to `http://localhost:5173` in your browser.
+
+## 📂 Project Structure
+
+```text
+src/
+├── assets/          # Static assets
+├── components/      # Reusable UI components (Sidebar, Header, etc.)
+├── hooks/           # Custom React hooks
+├── types.ts         # TypeScript interfaces and types
+├── StarRating.tsx   # Custom star rating component
+├── App.tsx          # Main application logic and layout
+└── main.tsx         # Entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📝 Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Search**: Type any movie name in the top search bar. Use at least 3 characters to trigger the search.
+- **Select**: Click on a movie card to view its full details.
+- **Rate**: Use the star component to give your own rating to the movie.
+- **Add to Watchlist**: Click "Add to Watchlist" to save the movie for later.
+- **View Watchlist**: Check the right sidebar to see your saved movies and their summary statistics.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/manjul10/movieFetcher/issues).
+
+---
+
+Made with ❤️ by [Manjul](https://github.com/manjul10)
