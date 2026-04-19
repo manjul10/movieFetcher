@@ -26,7 +26,7 @@ function App() {
         setMovies(null);
       }
     } catch (err) {
-      if (err.name === "AbortError") {
+      if (err instanceof Error && err.name === "AbortError") {
         console.log("Fetch Aborted");
       } else {
         console.error("Fetch Error:", err);
